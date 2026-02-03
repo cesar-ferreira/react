@@ -88,6 +88,35 @@
   transform: none;
 }
 
+.required {
+  color: #ef4444;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--foreground);
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;

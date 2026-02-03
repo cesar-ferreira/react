@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { UserProvider } from "@/features/user/providers/UserProvider";
+import { SkipLink } from "@/shared/components/SkipLink/SkipLink";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <SkipLink />
         <UserProvider>{children}</UserProvider>
       </body>
     </html>

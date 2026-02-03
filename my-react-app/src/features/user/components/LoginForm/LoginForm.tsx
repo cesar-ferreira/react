@@ -25,27 +25,37 @@ export function LoginForm() {
       <p className={styles.description}>
         Selecione um usuário para fazer login (autenticação simulada)
       </p>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.field}>
-          <label htmlFor="user-select" className={styles.label}>
-            Selecionar Usuário
-          </label>
-          <select
-            id="user-select"
-            value={selectedUserId}
-            onChange={(e) => setSelectedUserId(e.target.value)}
-            className={styles.select}
-            required
-            aria-required="true"
-          >
-            <option value="">Selecione um usuário...</option>
-            {mockUsers.map((user) => (
-              <option key={user.id} value={user.id}>
-                {user.name} ({user.email})
-              </option>
-            ))}
-          </select>
-        </div>
+      <form onSubmit={handleSubmit} className={styles.form} noValidate>
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.visuallyHidden}>
+            Seleção de usuário para login
+          </legend>
+          <div className={styles.field}>
+            <label htmlFor="user-select" className={styles.label}>
+              Selecionar Usuário <span className={styles.required}>*</span>
+            </label>
+            <select
+              id="user-select"
+              value={selectedUserId}
+              onChange={(e) => setSelectedUserId(e.target.value)}
+              className={styles.select}
+              required
+              aria-required="true"
+              aria-describedby="user-select-hint"
+            >
+              <option value="">Selecione um usuário...</option>
+              {mockUsers.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.name} ({user.email})
+                </option>
+              ))}
+            </select>
+            <span id="user-select-hint" className={styles.hint}>
+              Escolha um usuário da lista para fazer login (autenticação
+              simulada)
+            </span>
+          </div>
+        </fieldset>
         <button type="submit" className={styles.button}>
           Entrar
         </button>

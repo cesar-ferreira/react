@@ -11,12 +11,12 @@ describe("LoginForm", () => {
   test("should render login form", () => {
     renderWithProvider(<LoginForm />);
     expect(screen.getByText("Login Simulado")).toBeInTheDocument();
-    expect(screen.getByLabelText("Selecionar Usuário")).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Selecionar Usuário/)).toBeInTheDocument();
   });
 
   test("should display all mock users in select", () => {
     renderWithProvider(<LoginForm />);
-    const select = screen.getByLabelText("Selecionar Usuário");
+    const select = screen.getByLabelText(/^Selecionar Usuário/);
 
     mockUsers.forEach((user) => {
       expect(screen.getByText(new RegExp(user.name))).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("LoginForm", () => {
 
   test("should submit form with selected user", () => {
     renderWithProvider(<LoginForm />);
-    const select = screen.getByLabelText("Selecionar Usuário");
+    const select = screen.getByLabelText(/^Selecionar Usuário/);
     const button = screen.getByRole("button", { name: "Entrar" });
 
     fireEvent.change(select, { target: { value: mockUsers[0].id } });
@@ -37,7 +37,7 @@ describe("LoginForm", () => {
 
   test("should require user selection", () => {
     renderWithProvider(<LoginForm />);
-    const select = screen.getByLabelText("Selecionar Usuário");
+    const select = screen.getByLabelText(/^Selecionar Usuário/);
     expect(select).toBeRequired();
   });
 });

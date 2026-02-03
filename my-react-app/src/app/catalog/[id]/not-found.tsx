@@ -3,7 +3,7 @@ import styles from "./not-found.module.css";
 
 export default function NotFound() {
   return (
-    <main className={styles.container}>
+    <main id="main-content" className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.title}>Item não encontrado</h1>
         <p className={styles.message}>

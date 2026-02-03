@@ -37,9 +37,10 @@ describe("CatalogGrid", () => {
     ).toBeInTheDocument();
   });
 
-  test("should have correct role attributes", () => {
+  test("should have correct semantic structure", () => {
     const { container } = render(<CatalogGrid items={mockItems} />);
-    const list = container.querySelector('[role="list"]');
-    expect(list).toBeInTheDocument();
+    const list = container.querySelector("ul");
+    expect(list).not.toBeNull();
+    expect(list?.className).toContain("list");
   });
 });

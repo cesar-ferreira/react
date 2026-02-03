@@ -12,7 +12,7 @@ export default function CatalogPage() {
   const items = CatalogService.getAllItems();
 
   return (
-    <main>
+    <main id="main-content">
       <PageHeader
         title="Catálogo de Produtos"
         description="Explore nossa seleção completa de produtos"

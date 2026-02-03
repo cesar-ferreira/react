@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useUser } from "../../context/UserContext";
+import { LoadingSpinner } from "@/shared/components/LoadingSpinner/LoadingSpinner";
 import styles from "./ProfileForm.module.css";
 
 export function ProfileForm() {
@@ -12,6 +13,8 @@ export function ProfileForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isEditing, setIsEditing] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (state.user) {
@@ -43,12 +46,17 @@ export function ProfileForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
+
+    setIsSubmitting(true);
+
+    // Simular operação assíncrona
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     updateUser({
       name: name.trim(),
@@ -58,6 +66,7 @@ export function ProfileForm() {
 
     setSuccessMessage("Perfil atualizado com sucesso!");
     setIsEditing(false);
+    setIsSubmitting(false);
     setTimeout(() => setSuccessMessage(""), 3000);
   };
 
@@ -70,6 +79,13 @@ export function ProfileForm() {
     setErrors({});
     setIsEditing(false);
     setSuccessMessage("");
+    // Retornar foco para o botão de editar
+    setTimeout(() => {
+      const editButton = document.querySelector(
+        `button[aria-label="Editar perfil"]`
+      ) as HTMLButtonElement;
+      editButton?.focus();
+    }, 100);
   };
 
   if (!state.user) {
@@ -83,8 +99,14 @@ export function ProfileForm() {
         {!isEditing && (
           <button
             type="button"
-            onClick={() => setIsEditing(true)}
+            onClick={() => {
+              setIsEditing(true);
+              setTimeout(() => {
+                nameInputRef.current?.focus();
+              }, 100);
+            }}
             className={styles.editButton}
+            aria-label="Editar perfil"
           >
             Editar
           </button>
@@ -97,73 +119,104 @@ export function ProfileForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.field}>
-          <label htmlFor="name" className={styles.label}>
-            Nome Completo
-          </label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            disabled={!isEditing}
-            className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
-            aria-invalid={errors.name ? "true" : "false"}
-            aria-describedby={errors.name ? "name-error" : undefined}
-          />
-          {errors.name && (
-            <span id="name-error" className={styles.error} role="alert">
-              {errors.name}
-            </span>
-          )}
-        </div>
+      <form onSubmit={handleSubmit} className={styles.form} noValidate>
+        <fieldset
+          className={styles.fieldset}
+          disabled={!isEditing || isSubmitting}
+        >
+          <legend className={styles.visuallyHidden}>
+            Informações do perfil
+          </legend>
 
-        <div className={styles.field}>
-          <label htmlFor="email" className={styles.label}>
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={!isEditing}
-            className={`${styles.input} ${errors.email ? styles.inputError : ""}`}
-            aria-invalid={errors.email ? "true" : "false"}
-            aria-describedby={errors.email ? "email-error" : undefined}
-          />
-          {errors.email && (
-            <span id="email-error" className={styles.error} role="alert">
-              {errors.email}
-            </span>
-          )}
-        </div>
+          <div className={styles.field}>
+            <label htmlFor="name" className={styles.label}>
+              Nome Completo <span className={styles.required}>*</span>
+            </label>
+            <input
+              ref={nameInputRef}
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              disabled={!isEditing || isSubmitting}
+              className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby={errors.name ? "name-error" : undefined}
+              aria-required="true"
+              required
+            />
+            {errors.name && (
+              <span id="name-error" className={styles.error} role="alert">
+                {errors.name}
+              </span>
+            )}
+          </div>
 
-        <div className={styles.field}>
-          <label htmlFor="avatar" className={styles.label}>
-            URL do Avatar (opcional)
-          </label>
-          <input
-            type="url"
-            id="avatar"
-            value={avatar}
-            onChange={(e) => setAvatar(e.target.value)}
-            disabled={!isEditing}
-            className={styles.input}
-            placeholder="https://exemplo.com/avatar.jpg"
-          />
-        </div>
+          <div className={styles.field}>
+            <label htmlFor="email" className={styles.label}>
+              Email <span className={styles.required}>*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={!isEditing || isSubmitting}
+              className={`${styles.input} ${errors.email ? styles.inputError : ""}`}
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
+              aria-required="true"
+              required
+            />
+            {errors.email && (
+              <span id="email-error" className={styles.error} role="alert">
+                {errors.email}
+              </span>
+            )}
+          </div>
+
+          <div className={styles.field}>
+            <label htmlFor="avatar" className={styles.label}>
+              URL do Avatar (opcional)
+            </label>
+            <input
+              type="url"
+              id="avatar"
+              value={avatar}
+              onChange={(e) => setAvatar(e.target.value)}
+              disabled={!isEditing || isSubmitting}
+              className={styles.input}
+              placeholder="https://exemplo.com/avatar.jpg"
+              aria-describedby="avatar-hint"
+            />
+            <span id="avatar-hint" className={styles.hint}>
+              Cole a URL completa da imagem do seu avatar
+            </span>
+          </div>
+        </fieldset>
 
         {isEditing && (
           <div className={styles.actions}>
-            <button type="submit" className={styles.saveButton}>
-              Salvar
+            <button
+              type="submit"
+              className={styles.saveButton}
+              disabled={isSubmitting}
+              aria-busy={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <LoadingSpinner size="small" label="Salvando..." />
+                  <span className={styles.buttonText}>Salvando...</span>
+                </>
+              ) : (
+                "Salvar"
+              )}
             </button>
             <button
               type="button"
               onClick={handleCancel}
               className={styles.cancelButton}
+              disabled={isSubmitting}
             >
               Cancelar
             </button>

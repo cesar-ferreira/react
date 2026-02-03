@@ -1,10 +1,27 @@
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { CatalogService } from "@/services/catalog.service";
 import { BackButton } from "@/shared/components/BackButton/BackButton";
 import { ItemHeader } from "@/features/catalog/components/ItemHeader/ItemHeader";
 import { ItemImage } from "@/features/catalog/components/ItemImage/ItemImage";
-import { ItemDescription } from "@/features/catalog/components/ItemDescription/ItemDescription";
+import { LoadingSpinner } from "@/shared/components/LoadingSpinner/LoadingSpinner";
 import type { Metadata } from "next";
+
+// Lazy load do componente de descrição (não crítico para renderização inicial)
+const ItemDescription = dynamic(
+  () =>
+    import("@/features/catalog/components/ItemDescription/ItemDescription").then(
+      (mod) => ({ default: mod.ItemDescription })
+    ),
+  {
+    loading: () => (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <LoadingSpinner size="medium" label="Carregando descrição..." />
+      </div>
+    ),
+  }
+);
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -51,12 +68,20 @@ export default async function ItemDetailPage({ params }: PageProps) {
   const item = CatalogService.getItemById(id);
 
   return (
-    <main>
+    <main id="main-content">
       <BackButton />
       <article>
         <ItemHeader item={item} />
         <ItemImage item={item} />
-        <ItemDescription item={item} />
+        <Suspense
+          fallback={
+            <div style={{ padding: "2rem", textAlign: "center" }}>
+              <LoadingSpinner size="medium" label="Carregando descrição..." />
+            </div>
+          }
+        >
+          <ItemDescription item={item} />
+        </Suspense>
       </article>
     </main>
   );

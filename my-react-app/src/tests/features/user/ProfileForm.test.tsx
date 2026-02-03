@@ -83,7 +83,7 @@ describe("ProfileForm", () => {
     const editButton = screen.getByText("Editar");
     fireEvent.click(editButton);
 
-    const emailInput = screen.getByLabelText("Email");
+    const emailInput = screen.getByLabelText(/^Email/);
     fireEvent.change(emailInput, { target: { value: "not-an-email" } });
 
     const saveButton = screen.getByText("Salvar");

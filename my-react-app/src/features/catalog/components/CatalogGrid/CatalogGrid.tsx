@@ -7,21 +7,23 @@ interface CatalogGridProps {
 }
 
 export function CatalogGrid({ items }: CatalogGridProps) {
-  if (items.length === 0) {
+  if (!items || items.length === 0) {
     return (
-      <div className={styles.empty}>
-        <p>Nenhum item encontrado no catálogo.</p>
-      </div>
+      <section className={styles.emptyState} aria-live="polite">
+        <p className={styles.empty}>Nenhum item encontrado no catálogo.</p>
+      </section>
     );
   }
 
   return (
-    <div className={styles.grid} role="list">
-      {items.map((item) => (
-        <div key={item.id} role="listitem">
-          <CatalogCard item={item} />
-        </div>
-      ))}
-    </div>
+    <section className={styles.grid} aria-label="Lista de produtos do catálogo">
+      <ul className={styles.list}>
+        {items.map((item) => (
+          <li key={item.id}>
+            <CatalogCard item={item} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

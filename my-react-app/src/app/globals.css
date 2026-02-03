@@ -40,3 +40,42 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Melhorias de Acessibilidade - Estilos de Foco */
+*:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+/* Remover outline padrão para mouse, manter para teclado */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Melhorar contraste e legibilidade */
+main {
+  min-height: calc(100vh - 2rem);
+}
+
+/* Classe utilitária para conteúdo visualmente oculto mas acessível */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
