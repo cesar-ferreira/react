@@ -65,6 +65,35 @@
   outline-offset: 2px;
 }
 
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--foreground);
+  text-decoration: none;
+  border: 2px solid var(--foreground);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.secondary:hover {
+  background: var(--foreground);
+  color: var(--background);
+  transform: translateY(-2px);
+}
+
+.secondary:focus {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
@@ -74,8 +103,19 @@
     font-size: 1.125rem;
   }
 
-  .primary {
+  .primary,
+  .secondary {
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
+  }
+
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
   }
 }

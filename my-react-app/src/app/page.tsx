@@ -13,6 +13,9 @@ export default function Home() {
           <Link href="/catalog" className={styles.primary}>
             Ver Catálogo
           </Link>
+          <Link href="/account" className={styles.secondary}>
+            Minha Conta
+          </Link>
         </div>
       </main>
     </div>
