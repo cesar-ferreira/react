@@ -21,11 +21,7 @@ jest.mock("next/server", () => ({
         status: status,
         ok: status < 400,
         statusText:
-          status === 404
-            ? "Not Found"
-            : status === 400
-              ? "Bad Request"
-              : "OK",
+          status === 404 ? "Not Found" : status === 400 ? "Bad Request" : "OK",
       };
       // Adiciona propriedades de data sem sobrescrever status
       for (const key in data) {

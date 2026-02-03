@@ -6,7 +6,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Notebook Gamer Pro",
     description:
       "Notebook de alta performance com processador Intel i7, 16GB RAM, SSD 512GB e placa de vídeo dedicada RTX 3060. Ideal para jogos e trabalho pesado.",
-    image: "https://via.placeholder.com/400x300?text=Notebook+Gamer",
+    image:
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
     price: 4599.99,
     category: "Eletrônicos",
     createdAt: "2024-01-15T10:30:00Z",
@@ -18,7 +19,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Smartphone Premium",
     description:
       "Smartphone com tela AMOLED de 6.7 polegadas, câmera tripla de 108MP, bateria de 5000mAh e carregamento rápido de 65W.",
-    image: "https://via.placeholder.com/400x300?text=Smartphone+Premium",
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     price: 3299.99,
     category: "Eletrônicos",
     createdAt: "2024-01-20T14:15:00Z",
@@ -30,7 +32,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Fone de Ouvido Bluetooth",
     description:
       "Fone de ouvido sem fio com cancelamento de ruído ativo, bateria de 30 horas e qualidade de som Hi-Fi.",
-    image: "https://via.placeholder.com/400x300?text=Fone+Bluetooth",
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     price: 599.99,
     category: "Áudio",
     createdAt: "2024-02-01T09:00:00Z",
@@ -42,7 +45,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Smartwatch Fitness",
     description:
       "Relógio inteligente com monitoramento de saúde, GPS integrado, resistente à água e bateria de 7 dias.",
-    image: "https://via.placeholder.com/400x300?text=Smartwatch",
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     price: 899.99,
     category: "Wearables",
     createdAt: "2024-02-05T11:20:00Z",
@@ -54,7 +58,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Tablet Profissional",
     description:
       "Tablet com tela de 12.9 polegadas, processador M2, 256GB de armazenamento e suporte para caneta stylus.",
-    image: "https://via.placeholder.com/400x300?text=Tablet",
+    image:
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop",
     price: 5499.99,
     category: "Eletrônicos",
     createdAt: "2024-02-10T16:45:00Z",
@@ -66,7 +71,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Câmera DSLR",
     description:
       "Câmera profissional com sensor full-frame de 24MP, gravação em 4K e lente kit 18-55mm incluída.",
-    image: "https://via.placeholder.com/400x300?text=Camera+DSLR",
+    image:
+      "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=300&fit=crop",
     price: 3899.99,
     category: "Fotografia",
     createdAt: "2024-02-15T13:30:00Z",
@@ -78,7 +84,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Teclado Mecânico RGB",
     description:
       "Teclado mecânico com switches Cherry MX, iluminação RGB personalizável e construção em alumínio.",
-    image: "https://via.placeholder.com/400x300?text=Teclado+Mecanico",
+    image:
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop",
     price: 449.99,
     category: "Periféricos",
     createdAt: "2024-02-20T10:00:00Z",
@@ -90,7 +97,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Mouse Gamer",
     description:
       "Mouse gamer com sensor óptico de 16000 DPI, 8 botões programáveis e iluminação RGB.",
-    image: "https://via.placeholder.com/400x300?text=Mouse+Gamer",
+    image:
+      "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
     price: 299.99,
     category: "Periféricos",
     createdAt: "2024-02-25T15:15:00Z",
@@ -102,7 +110,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Monitor 4K UltraWide",
     description:
       "Monitor curvo de 34 polegadas com resolução 4K, taxa de atualização de 144Hz e tecnologia HDR.",
-    image: "https://via.placeholder.com/400x300?text=Monitor+4K",
+    image:
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop",
     price: 3499.99,
     category: "Monitores",
     createdAt: "2024-03-01T09:30:00Z",
@@ -114,7 +123,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Caixa de Som Bluetooth",
     description:
       "Caixa de som portátil com som estéreo de 360°, bateria de 20 horas e à prova d'água IPX7.",
-    image: "https://via.placeholder.com/400x300?text=Caixa+Som",
+    image:
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop",
     price: 399.99,
     category: "Áudio",
     createdAt: "2024-03-05T11:00:00Z",
@@ -126,7 +136,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "SSD NVMe 1TB",
     description:
       "SSD de alta velocidade com interface NVMe, leitura de 3500MB/s e escrita de 3000MB/s.",
-    image: "https://via.placeholder.com/400x300?text=SSD+NVMe",
+    image:
+      "https://images.unsplash.com/photo-1587825147138-346d229db8d8?w=400&h=300&fit=crop",
     price: 599.99,
     category: "Armazenamento",
     createdAt: "2024-03-10T14:20:00Z",
@@ -138,7 +149,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Webcam Full HD",
     description:
       "Webcam com resolução Full HD 1080p, microfone estéreo integrado e ajuste automático de luz.",
-    image: "https://via.placeholder.com/400x300?text=Webcam",
+    image:
+      "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=300&fit=crop",
     price: 249.99,
     category: "Periféricos",
     createdAt: "2024-03-15T10:45:00Z",
@@ -150,7 +162,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Roteador Wi-Fi 6",
     description:
       "Roteador de última geração com Wi-Fi 6, velocidade de até 6000Mbps e cobertura de até 300m².",
-    image: "https://via.placeholder.com/400x300?text=Roteador",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
     price: 799.99,
     category: "Rede",
     createdAt: "2024-03-20T13:00:00Z",
@@ -162,7 +175,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Impressora Multifuncional",
     description:
       "Impressora jato de tinta com scanner, copiadora e fax integrados. Compatível com Wi-Fi e impressão móvel.",
-    image: "https://via.placeholder.com/400x300?text=Impressora",
+    image:
+      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=400&h=300&fit=crop",
     price: 1299.99,
     category: "Impressão",
     createdAt: "2024-03-25T16:30:00Z",
@@ -174,7 +188,8 @@ export const mockCatalogItems: CatalogItem[] = [
     title: "Placa de Vídeo RTX 4070",
     description:
       "Placa de vídeo de alta performance com 12GB GDDR6X, ray tracing e DLSS 3.0 para jogos em 4K.",
-    image: "https://via.placeholder.com/400x300?text=Placa+Video",
+    image:
+      "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=400&h=300&fit=crop",
     price: 4299.99,
     category: "Hardware",
     createdAt: "2024-04-01T09:15:00Z",
