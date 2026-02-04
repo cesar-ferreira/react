@@ -3,13 +3,14 @@
   font-family: var(--font-geist-sans);
   background-color: var(--background);
   padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
 }
 

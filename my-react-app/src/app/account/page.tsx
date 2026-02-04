@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useUser } from "@/features/user/context/UserContext";
-import { LoginForm } from "@/features/user/components/LoginForm/LoginForm";
 import { PageHeader } from "@/shared/components/PageHeader/PageHeader";
 import { LoadingSpinner } from "@/shared/components/LoadingSpinner/LoadingSpinner";
 import styles from "./page.module.css";
@@ -42,51 +42,46 @@ const ProfileForm = dynamic(
 );
 
 export default function AccountPage() {
-  const { state, logout } = useUser();
+  const { state } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!state.isAuthenticated) {
+      router.push("/");
+    }
+  }, [state.isAuthenticated, router]);
+
+  if (!state.isAuthenticated) {
+    return null;
+  }
 
   return (
     <main id="main-content">
       <PageHeader
-        title={state.isAuthenticated ? "Minha Conta" : "Área do Usuário"}
-        description={
-          state.isAuthenticated
-            ? "Gerencie suas informações pessoais"
-            : "Faça login para acessar sua conta"
-        }
+        title="Minha Conta"
+        description="Gerencie suas informações pessoais"
       />
 
-      {state.isAuthenticated ? (
-        <div className={styles.authenticatedContent}>
-          <Suspense
-            fallback={
-              <div style={{ padding: "2rem", textAlign: "center" }}>
-                <LoadingSpinner size="medium" label="Carregando perfil..." />
-              </div>
-            }
-          >
-            <ProfileDisplay />
-          </Suspense>
-          <Suspense
-            fallback={
-              <div style={{ padding: "2rem", textAlign: "center" }}>
-                <LoadingSpinner
-                  size="medium"
-                  label="Carregando formulário..."
-                />
-              </div>
-            }
-          >
-            <ProfileForm />
-          </Suspense>
-          <div className={styles.logoutContainer}>
-            <button onClick={logout} className={styles.logoutButton}>
-              Sair
-            </button>
-          </div>
-        </div>
-      ) : (
-        <LoginForm />
-      )}
+      <div className={styles.authenticatedContent}>
+        <Suspense
+          fallback={
+            <div style={{ padding: "2rem", textAlign: "center" }}>
+              <LoadingSpinner size="medium" label="Carregando perfil..." />
+            </div>
+          }
+        >
+          <ProfileDisplay />
+        </Suspense>
+        <Suspense
+          fallback={
+            <div style={{ padding: "2rem", textAlign: "center" }}>
+              <LoadingSpinner size="medium" label="Carregando formulário..." />
+            </div>
+          }
+        >
+          <ProfileForm />
+        </Suspense>
+      </div>
     </main>
   );
 }

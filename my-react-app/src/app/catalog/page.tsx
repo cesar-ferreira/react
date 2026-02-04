@@ -1,13 +1,14 @@
 import { CatalogService } from "@/services/catalog.service";
 import { PageHeader } from "@/shared/components/PageHeader/PageHeader";
 import { CatalogGrid } from "@/features/catalog/components/CatalogGrid/CatalogGrid";
+import { ProtectedRoute } from "@/shared/components/ProtectedRoute/ProtectedRoute";
 
 export const metadata = {
   title: "Catálogo | Aplicação Web Fullstack",
   description: "Explore nosso catálogo completo de produtos",
 };
 
-export default function CatalogPage() {
+function CatalogContent() {
   // Busca dados no build time para SSG
   const items = CatalogService.getAllItems();
 
@@ -19,5 +20,13 @@ export default function CatalogPage() {
       />
       <CatalogGrid items={items} />
     </main>
+  );
+}
+
+export default function CatalogPage() {
+  return (
+    <ProtectedRoute>
+      <CatalogContent />
+    </ProtectedRoute>
   );
 }

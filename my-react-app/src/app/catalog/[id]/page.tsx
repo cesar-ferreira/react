@@ -6,6 +6,7 @@ import { BackButton } from "@/shared/components/BackButton/BackButton";
 import { ItemHeader } from "@/features/catalog/components/ItemHeader/ItemHeader";
 import { ItemImage } from "@/features/catalog/components/ItemImage/ItemImage";
 import { LoadingSpinner } from "@/shared/components/LoadingSpinner/LoadingSpinner";
+import { ProtectedRoute } from "@/shared/components/ProtectedRoute/ProtectedRoute";
 import type { Metadata } from "next";
 
 // Lazy load do componente de descrição (não crítico para renderização inicial)
@@ -58,9 +59,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function ItemDetailPage({ params }: PageProps) {
-  const { id } = await params;
-
+async function ItemDetailContent({ id }: { id: string }) {
   if (!CatalogService.itemExists(id)) {
     notFound();
   }
@@ -84,5 +83,14 @@ export default async function ItemDetailPage({ params }: PageProps) {
         </Suspense>
       </article>
     </main>
+  );
+}
+
+export default async function ItemDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  return (
+    <ProtectedRoute>
+      <ItemDetailContent id={id} />
+    </ProtectedRoute>
   );
 }
