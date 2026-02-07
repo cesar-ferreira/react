@@ -4,7 +4,6 @@ import { UserProvider } from "@/features/user/providers/UserProvider";
 import { mockUsers } from "@/features/catalog/data/mockUsers";
 import { useUser } from "@/features/user/context/UserContext";
 
-// Mock do useRouter
 const mockPush = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -12,7 +11,6 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-// Mock do useUser para controlar o estado
 jest.mock("@/features/user/context/UserContext", () => ({
   ...jest.requireActual("@/features/user/context/UserContext"),
   useUser: jest.fn(),

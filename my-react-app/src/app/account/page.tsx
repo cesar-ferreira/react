@@ -8,7 +8,6 @@ import { PageHeader } from "@/shared/components/PageHeader/PageHeader";
 import { LoadingSpinner } from "@/shared/components/LoadingSpinner/LoadingSpinner";
 import styles from "./page.module.css";
 
-// Lazy load de componentes não críticos
 const ProfileDisplay = dynamic(
   () =>
     import("@/features/user/components/ProfileDisplay/ProfileDisplay").then(

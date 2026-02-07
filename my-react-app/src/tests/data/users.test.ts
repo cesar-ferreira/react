@@ -82,15 +82,12 @@ describe("Users Data Integrity", () => {
       });
     });
 
-    test("some users should have avatar and some should not", () => {
-      const usersWithAvatar = mockUsers.filter(
-        (user) => user.avatar !== undefined
-      );
-      const usersWithoutAvatar = mockUsers.filter(
-        (user) => user.avatar === undefined
-      );
-      expect(usersWithAvatar.length).toBeGreaterThan(0);
-      expect(usersWithoutAvatar.length).toBeGreaterThan(0);
+    test("all users should have avatar", () => {
+      mockUsers.forEach((user) => {
+        expect(user.avatar).toBeDefined();
+        expect(typeof user.avatar).toBe("string");
+        expect(user.avatar.length).toBeGreaterThan(0);
+      });
     });
   });
 

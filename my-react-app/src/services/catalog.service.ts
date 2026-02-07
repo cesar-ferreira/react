@@ -9,17 +9,10 @@ export class CatalogNotFoundError extends Error {
 }
 
 export class CatalogService {
-  /**
-   * Retorna todos os itens do catálogo
-   */
   static getAllItems(): CatalogItem[] {
     return mockCatalogItems;
   }
 
-  /**
-   * Retorna um item específico por ID
-   * @throws {CatalogNotFoundError} Se o item não for encontrado
-   */
   static getItemById(id: string): CatalogItem {
     const item = mockCatalogItems.find((item) => item.id === id);
 
@@ -30,9 +23,6 @@ export class CatalogService {
     return item;
   }
 
-  /**
-   * Verifica se um item existe
-   */
   static itemExists(id: string): boolean {
     return mockCatalogItems.some((item) => item.id === id);
   }

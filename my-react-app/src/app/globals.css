@@ -41,7 +41,6 @@ a {
   }
 }
 
-/* Melhorias de Acessibilidade - Estilos de Foco */
 *:focus-visible {
   outline: 2px solid var(--foreground);
   outline-offset: 2px;
@@ -57,17 +56,14 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* Remover outline padrão para mouse, manter para teclado */
 *:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Melhorar contraste e legibilidade */
 main {
   min-height: calc(100vh - 2rem);
 }
 
-/* Classe utilitária para conteúdo visualmente oculto mas acessível */
 .visually-hidden {
   position: absolute;
   width: 1px;

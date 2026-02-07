@@ -55,7 +55,6 @@ export function ProfileForm() {
 
     setIsSubmitting(true);
 
-    // Simular operação assíncrona
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     updateUser({
@@ -79,7 +78,6 @@ export function ProfileForm() {
     setErrors({});
     setIsEditing(false);
     setSuccessMessage("");
-    // Retornar foco para o botão de editar
     setTimeout(() => {
       const editButton = document.querySelector(
         `button[aria-label="Editar perfil"]`

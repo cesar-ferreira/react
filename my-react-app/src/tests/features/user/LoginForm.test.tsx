@@ -3,7 +3,6 @@ import { LoginForm } from "@/features/user/components/LoginForm/LoginForm";
 import { UserProvider } from "@/features/user/providers/UserProvider";
 import { mockUsers } from "@/features/catalog/data/mockUsers";
 
-// Mock do useRouter
 const mockPush = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -46,7 +45,6 @@ describe("LoginForm", () => {
     fireEvent.change(passwordInput, { target: { value: "123456" } });
     fireEvent.click(button);
 
-    // O usuário deve ser logado e redirecionado
     expect(select).toHaveValue(mockUsers[0].id);
     expect(mockPush).toHaveBeenCalledWith("/catalog");
   });

@@ -4,7 +4,6 @@ import { CatalogService } from "@/services/catalog.service";
 import { mockCatalogItems } from "@/features/catalog/data/mockCatalogItems";
 import type { CatalogItem } from "@/features/catalog/types/catalog.types";
 
-// Mock do NextResponse
 jest.mock("next/server", () => ({
   NextResponse: {
     json: jest.fn((data, init) => {
@@ -23,7 +22,6 @@ jest.mock("next/server", () => ({
         statusText:
           status === 404 ? "Not Found" : status === 400 ? "Bad Request" : "OK",
       };
-      // Adiciona propriedades de data sem sobrescrever status
       for (const key in data) {
         if (key !== "status") {
           response[key] = data[key];

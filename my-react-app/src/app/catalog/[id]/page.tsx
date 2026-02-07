@@ -9,7 +9,6 @@ import { LoadingSpinner } from "@/shared/components/LoadingSpinner/LoadingSpinne
 import { ProtectedRoute } from "@/shared/components/ProtectedRoute/ProtectedRoute";
 import type { Metadata } from "next";
 
-// Lazy load do componente de descrição (não crítico para renderização inicial)
 const ItemDescription = dynamic(
   () =>
     import("@/features/catalog/components/ItemDescription/ItemDescription").then(
@@ -28,10 +27,8 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-// ISR: Revalida a cada 1 hora (3600 segundos)
 export const revalidate = 3600;
 
-// Gera paths estáticos para todos os itens no build time
 export async function generateStaticParams() {
   const items = CatalogService.getAllItems();
   return items.map((item) => ({
@@ -39,7 +36,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Gera metadados dinâmicos para SEO
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {

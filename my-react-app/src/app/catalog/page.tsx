@@ -9,7 +9,6 @@ export const metadata = {
 };
 
 function CatalogContent() {
-  // Busca dados no build time para SSG
   const items = CatalogService.getAllItems();
 
   return (

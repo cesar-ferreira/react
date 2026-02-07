@@ -7,7 +7,6 @@ interface ItemImageProps {
 }
 
 export function ItemImage({ item }: ItemImageProps) {
-  // Converte URL do Unsplash para maior resolução na página de detalhes
   const highResImage = item.image.replace("w=400&h=300", "w=1200&h=800");
 
   return (
@@ -19,7 +18,7 @@ export function ItemImage({ item }: ItemImageProps) {
         className={styles.image}
         priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-        quality={90}
+        quality={75}
       />
     </div>
   );

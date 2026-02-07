@@ -89,13 +89,10 @@ describe("ProfileForm", () => {
     const saveButton = screen.getByText("Salvar");
     fireEvent.click(saveButton);
 
-    // Verificar que o erro de email inválido aparece
     await waitFor(
       () => {
         const errorElement = screen.queryByText("Email inválido");
-        // Se não encontrar, verificar se pelo menos o formulário não foi submetido
         if (!errorElement) {
-          // Verificar que updateUser não foi chamado (validação impediu submissão)
           expect(mockUpdateUser).not.toHaveBeenCalled();
         } else {
           expect(errorElement).toBeInTheDocument();
