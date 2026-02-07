@@ -137,7 +137,7 @@ export const mockCatalogItems: CatalogItem[] = [
     description:
       "SSD de alta velocidade com interface NVMe, leitura de 3500MB/s e escrita de 3000MB/s.",
     image:
-      "https://images.unsplash.com/photo-1587825147138-346d229db8d8?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=300&fit=crop",
     price: 599.99,
     category: "Armazenamento",
     createdAt: "2024-03-10T14:20:00Z",

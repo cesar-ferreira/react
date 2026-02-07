@@ -5,5 +5,3 @@ export interface User {
   avatar?: string;
   createdAt: string;
 }
-
-export type UserList = User[];

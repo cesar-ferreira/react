@@ -9,5 +9,3 @@ export interface CatalogItem {
   rating?: number;
   stock?: number;
 }
-
-export type CatalogItemList = CatalogItem[];
