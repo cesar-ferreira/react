@@ -21,6 +21,8 @@ export const mockUsers: User[] = [
     id: "user-3",
     name: "Pedro Oliveira",
     email: "pedro.oliveira@example.com",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
     createdAt: "2024-01-10T09:15:00Z",
   },
   {
@@ -35,6 +37,8 @@ export const mockUsers: User[] = [
     id: "user-5",
     name: "Carlos Ferreira",
     email: "carlos.ferreira@example.com",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
     createdAt: "2024-02-05T11:20:00Z",
   },
 ];
